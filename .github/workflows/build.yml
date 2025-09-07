@@ -39,10 +39,11 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build Docker image
-        run: docker build -t erayalakese/eas-like-local-builder:${{ env.VERSION }} -t erayalakese/eas-like-local-builder:latest .
+        run: docker build -t 47vigen/eas-like-local-builder:${{ env.VERSION }} -t 47vigen/eas-like-local-builder:latest .
 
       - name: Push Docker images
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         run: |
           docker push erayalakese/eas-like-local-builder:${{ env.VERSION }}
+
           docker push erayalakese/eas-like-local-builder:latest
